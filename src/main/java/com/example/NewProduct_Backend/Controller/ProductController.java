@@ -12,7 +12,7 @@ public class ProductController {
 
     @Autowired
     private ProductDao dao;
-    @CrossOrigin(origins = "*")
+
    @GetMapping("/")
     public String Homepage(){
         return "Welcome to Home page";
