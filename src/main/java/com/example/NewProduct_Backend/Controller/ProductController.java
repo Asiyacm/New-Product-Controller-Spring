@@ -5,7 +5,9 @@ import com.example.NewProduct_Backend.dao.ProductDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class ProductController {
@@ -19,10 +21,12 @@ public class ProductController {
     }
     @CrossOrigin(origins = "*")
     @PostMapping(path="/add",consumes = "application/json",produces = "application/json")
-    public String Addpage(@RequestBody Product p){
+    public Map<String,String> Addpage(@RequestBody Product p){
         System.out.println(p.getPname().toString());
         dao.save(p);
-        return "Welcome to Product Add page";
+        HashMap<String, String> map = new HashMap<>();
+        map.put("status", "success");
+        return map;
     }
     @CrossOrigin(origins = "*")
     @GetMapping("/view")
